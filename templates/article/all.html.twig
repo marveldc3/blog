@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tous les articles</h1>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article {% if article.isPremium %}premium{% endif %}">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content|slice(0, 100) ~ '...' }}</p>
+                <a href="{{ path('article_show', {id: article.id}) }}">Lire la suite</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

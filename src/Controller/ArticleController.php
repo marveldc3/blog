@@ -20,8 +20,6 @@ class ArticleController extends AbstractController
                 )
         ]);
     }
-
-   #Route : /article/{id}, name="article_show", methods=["GET"])
    #[Route('/article/{id}', name: 'article_show', methods: ['GET'])]
     
     public function show(ArticleRepository $articles, $id): Response{

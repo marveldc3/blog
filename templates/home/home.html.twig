@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bienvenue sur notre blog</h1>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content|slice(0, 100) ~ '...' }}</p>
+                <a href="{{ path('article_show', {id: article.id}) }}">Lire la suite</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="newsletter">
+        <h2>Inscrivez-vous à notre newsletter</h2>
+        <form action="#" method="post">
+            <input type="email" name="email" placeholder="Votre email">
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+    <div class="cta">
+        <a href="{{ path('article_index') }}">Voir tous les articles</a>
+        <a href="#">Devenir membre premium</a>
+    </div>
+{% endblock %}
