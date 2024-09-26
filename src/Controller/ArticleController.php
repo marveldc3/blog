@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
@@ -27,6 +26,10 @@ class ArticleController extends AbstractController
     public function show(ArticleRepository $articleRepository, int $id): Response
     {
         $article = $articleRepository->findOneBy(['id' => $id]);
+
+        if (!$article) {
+            throw $this->createNotFoundException('Article not found');
+        }
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
